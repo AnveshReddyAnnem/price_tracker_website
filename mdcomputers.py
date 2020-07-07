@@ -14,15 +14,15 @@ class Main:
 
     def get_url(self):
         # get URL
-        self.url = input('Enter TataCliq url: ')
-        # Splitting or slicing url to get website name i.e Amazon.in
+        self.url = input('Enter mdcomputers URL: ')
+        # Splitting or slicing url to get website name i.e Croma
         check_url = self.url.split("//")[-1].split("/")[0]
-        # check if url belongs to Amazon.in
-        if check_url == 'www.tatacliq.com':
+        # check if url belongs to Croma
+        if check_url == 'www.mdcomputers.in' or 'mdcomputers.in':
             self.check_price()
         else:
             print('-' * 150)
-            print(" You Seem to Have Entered Wrong URL. Check If Your is From tatacliq.com")
+            print(" You Seem to Have Entered Wrong URL. Check If Your is From www.mdcomputers.in")
             print('-' * 150)
             time.sleep(2)
             # if wrong url re-run get_url()
@@ -34,20 +34,17 @@ class Main:
         soup = BeautifulSoup(page.content, 'html.parser')
         # validate url page if item exists
         try:
-            # self.title = soup.select("#productTitle")[0].get_text().strip()
-            self.title = soup.find(class_='_2qfozlUZGLD1nRgcHNLXdP').get_text()
-            # self.price = soup.select("#priceblock_ourprice")[0].get_text()
-            self.price = soup.find(class_='_3BuuEa4DZJe-0OCEQmi_K_').find('h3')
+            self.title = soup.find(class_='title-product').get_text().strip()
+            self.price = soup.find(class_='price-new').get_text().strip()
+
         except:
             print('~' * 150)
             print('Error with URL , Copy Correct URL, Try Again !!')
             print('~' * 150)
             self.get_url()
-        # strip_price = price[1:]
-        # self.price = int(raw_price.replace(',', ''))
 
         print('Product Name: ', self.title)
-        print('Amazon Product Price: ', self.price)
+        print('mdcomputers product Price: ', self.price)
 
 
 # call Class

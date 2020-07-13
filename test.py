@@ -14,7 +14,7 @@ class Main:
 
     def get_url(self):
         # get URL
-        self.url =  "https://shop.gadgetsnow.com/smartphones/samsung-galaxy-m30-32gb-metallic-blue-3gb-ram-/10021/p_G132498"
+        self.url =  "https://www.tatacliq.com/apple-iphone-11-64-gb-green/p-mp000000005562295"
         self.check_price()
 
     # check price
@@ -23,8 +23,8 @@ class Main:
         soup = BeautifulSoup(page.content, 'html.parser')
         # validate url page if item exists
         try:
-            self.title = soup.find(class_='flt productcolumone zur').get_text().strip()
-            self.price = soup.find(class_='offerprice flt').
+            self.title = soup.find('h1', attrs={'class':'_2qfozlUZGLD1nRgcHNLXdP'}).get_text()
+            self.price = soup.find('h1', attrs={'class':'_3BuuEa4DZJe-0OCEQmi_K_'}).get_text()
         except:
             print('~' * 150)
             print('Error with URL , Copy Correct URL, Try Again !!')
@@ -34,7 +34,7 @@ class Main:
         # self.price = int(raw_price.replace(',', ''))
 
         print('Product Name: ', self.title)
-        print('Reliance Product Price: ', self.price)
+        print('TATA Product Price: ', self.price)
 
 
 # call Class
